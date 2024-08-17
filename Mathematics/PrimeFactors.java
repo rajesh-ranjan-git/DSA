@@ -8,7 +8,7 @@ public class PrimeFactors {
         if (num % 2 == 0 || num % 3 == 0)
             return false;
 
-        for (int i = 5; i * i <= num; i = i + 6) {
+        for (int i = 5; i * i <= num; i += 6) {
             if (num % i == 0 || num % (i + 2) == 0)
                 return false;
         }
@@ -18,42 +18,57 @@ public class PrimeFactors {
     
     void primeFactors(int num) {
 
+        if (num <= 1) {
+            System.out.println(num);
+            return;
+        }
+
         if (prime(num)) {
             System.out.println(num);
             return;
         }
+
+        for (int i = 2; i < num; i++) {
+            if (prime(i)) {
+                int x = i;
+                while (num % x == 0) {
+                    System.out.println(i);
+                    x *= i;
+                }
+            }
+        }
+    }
+    
+    void primeFactorsOptimized(int num) {
         
-        if (num == 0 || num == 1 || num == 2 || num == 3) {
+        if (num <= 1) {
             System.out.println(num);
             return;
         }
 
-        while (num % 2 == 0) {
-            System.out.println(2);
-            num /= 2;
+        if (prime(num)) {
+            System.out.println(num);
+            return;
         }
 
-        while (num % 3 == 0) {
-            System.out.println(3);
-            num /= 3;
-        }
-
-        for (int i = 5; i * i < num; i++) {
-            while (prime(i)) {
+        for (int i = 2; i * i <= num; i++) {
+            while (num % i == 0) {
                 System.out.println(i);
                 num /= i;
             }
         }
-
-        System.out.println(num);
+        
     }
 
     public static void main(String[] args) {
         PrimeFactors primeFactors = new PrimeFactors();
 
-        int num = 10008;
+        int num = 450;
 
         System.out.println("The prime factorization of " + num + " are :");
         primeFactors.primeFactors(num);
+
+        System.out.println("The prime factorization of " + num + " using optimized method are :");
+        primeFactors.primeFactorsOptimized(num);
     }
 }
