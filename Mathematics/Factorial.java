@@ -34,9 +34,10 @@ public class Factorial {
 
     public static void main(String[] args) {
         Factorial factorial = new Factorial();
-        int inputNum = 5;
+        int inputNum = 42;
         System.out.println("Factorial of the given input : " + inputNum + " is : " + factorial.getFactorial(inputNum));
         System.out.println("Factorial of the given input : " + inputNum + " by recursion is : " + factorial.getFactorialByRecursion(inputNum));
-        System.out.println("Another method for Factorial of the given input : " + inputNum + " by recursion is : " + factorial.getFactorialByRecursion2(inputNum));
+        System.out.println("Another method for Factorial of the given input : " + inputNum + " by recursion is : "
+                + factorial.getFactorialByRecursion2(inputNum));
     }
 }
