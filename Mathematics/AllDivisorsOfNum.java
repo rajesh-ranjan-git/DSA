@@ -21,9 +21,43 @@ public class AllDivisorsOfNum {
         if (isPrime(num))
             System.out.println(num);
         else {
-            for (int i = 2; i <= num; i++) {
+            for (int i = 2; i < num; i++) {
                 if (num % i == 0)
                     System.out.println(i);
+            }
+        }
+    }
+
+    void allDivisorsOfNumOptimized(int num) {
+
+        if (isPrime(num))
+            System.out.println(num);
+        else {
+            for (int i = 2; i * i <= num; i++) {
+                if (num % i == 0) {
+                    System.out.println(i);
+                    if (i != num / i)
+                        System.out.println(num / i);
+                }
+            }
+        }
+    }
+
+    void allDivisorsOfNumOptimizedSorted(int num) {
+
+        int i = 0;
+        if (isPrime(num))
+            System.out.println(num);
+        else {
+            for (i = 2; i * i <= num; i++) {
+                if (num % i == 0) {
+                    System.out.println(i);
+                }
+            }
+            for (; i >= 1; i++) {
+                if (num % i == 0) {
+                    System.out.println(i);
+                }
             }
         }
     }
@@ -31,9 +65,11 @@ public class AllDivisorsOfNum {
     public static void main(String[] args) {
         AllDivisorsOfNum allDivisorsOfNum = new AllDivisorsOfNum();
 
-        int num = 47;
+        int num = 20;
 
-        System.out.println("All divisors of " + num + " are : \n1");
+        System.out.println("All divisors of " + num + " are :");
         allDivisorsOfNum.allDivisorsOfNum(num);
+        allDivisorsOfNum.allDivisorsOfNumOptimized(num);
+        allDivisorsOfNum.allDivisorsOfNumOptimizedSorted(num);
     }
 }
